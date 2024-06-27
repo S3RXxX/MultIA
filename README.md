@@ -40,7 +40,7 @@ To install the required dependencies and set up the project, follow these steps:
 ## Usage
  ```sh
 py src/...
-´´´
+```
 ## Contribution
 <!-- Contributors -->
 * [**Sergi Guimerà Roig**](https://github.com/S3RXxX)
