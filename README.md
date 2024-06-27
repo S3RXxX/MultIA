@@ -1,6 +1,6 @@
 # MultIA
 
-Trying to create a multimodal AI using models/tools already trained/created which fit in my GPU (4060 8GB + 4).
+Trying to create a multimodal AI using models/tools already trained/created which fit in my GPU (4060 8GB + 4 (RAM)).
 
 ## Overview
 
@@ -23,8 +23,7 @@ MMS is employed for text-to-speech synthesis. It converts text into spoken langu
 
 ## Hardware Requirements
 
-- GPU: NVIDIA RTX 4060 8GB
-- Additional 4GB GPU memory
+- GPU: NVIDIA RTX 4060 8GB or superior
 
 ## Installation
 
@@ -34,3 +33,20 @@ To install the required dependencies and set up the project, follow these steps:
    ```sh
    git clone https://github.com/yourusername/MultIA.git
    cd MultIA
+   ´´´
+2. Install the dependencies:
+   pip install -r requirements.txt
+
+## Usage
+ ```sh
+py src/...
+´´´
+## Contribution
+<!-- Contributors -->
+* [**Sergi Guimerà Roig**](https://github.com/S3RXxX)
+
+## License
+IDK yet ...
+
+## Contact
+For any inquiries or feedback, please reach out to sergiguimeraroig@gmail.com.
