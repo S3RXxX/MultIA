@@ -33,7 +33,7 @@ To install the required dependencies and set up the project, follow these steps:
    ```sh
    git clone https://github.com/yourusername/MultIA.git
    cd MultIA
-   ´´´
+   ```
 2. Install the dependencies:
    pip install -r requirements.txt
 
