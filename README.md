@@ -34,9 +34,15 @@ To install the required dependencies and set up the project, follow these steps:
    git clone https://github.com/yourusername/MultIA.git
    cd MultIA
    ```
-2. Install the dependencies:
+2. Install PyTorch:
+   For CUDA drivers 12.1:
+ ```sh
+   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+   ```
+3. Install other dependencies:
+   ```sh
    pip install -r requirements.txt
-
+   ```
 ## Usage
  ```sh
 py src/...
