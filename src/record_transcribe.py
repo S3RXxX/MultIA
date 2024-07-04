@@ -5,6 +5,11 @@ import wave
 import whisper
 import threading
 import ollama
+from transformers import VitsModel, AutoTokenizer
+import os
+import scipy
+import pygame
+import torch
 
 class AudioRecorder:
     def __init__(self):
@@ -73,14 +78,37 @@ def LLM_chat(transcribed_text):
 
     response = ollama.chat(model='llama3:instruct', messages=recorder.messages)
     recorder.messages.append(response['message'])
+
+    speak(response=response)
+
     print()
     print(response['message']['content'])
     print()
+
+def speak(response):
+    inputs = tokenizer(response['message']['content'], return_tensors="pt")
+    with torch.no_grad():
+        output = model(**inputs).waveform
+    scipy.io.wavfile.write("audio_test_3.wav", rate=model.config.sampling_rate, data=output.float().numpy().flatten())
+    # Initialize the mixer module
+    pygame.mixer.init()
+
+    # Load the mp3 file
+    pygame.mixer.music.load("audio_test_3.wav")
+
+    # Play the loaded mp3 file
+    pygame.mixer.music.play()
+
 if __name__ == "__main__":
+
     # Initialize the audio recorder
     recorder = AudioRecorder()
     output_filename = "../data/recorded_audio.wav"
 
+    # init speaker
+    model = VitsModel.from_pretrained("facebook/mms-tts-eng") # spa/eng
+    tokenizer = AutoTokenizer.from_pretrained("facebook/mms-tts-eng")
+    
     # Create the main window
     root = tk.Tk()
     root.title("Audio Recorder")
