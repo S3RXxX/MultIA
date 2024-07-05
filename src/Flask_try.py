@@ -52,7 +52,6 @@ def delete(n):
 def update(n):
     global messages
     n -= 1
-    print(n)
     if request.method == 'POST':
         new_content = request.form['text']
         try:
@@ -63,7 +62,7 @@ def update(n):
             return "There was an error while erasing your messages"
     else:
         old_content = messages[n]['content']
-        return render_template('update.html', n=n, old_content=old_content)
+        return render_template('update.html', n=n+1, old_content=old_content)
         
 
 
