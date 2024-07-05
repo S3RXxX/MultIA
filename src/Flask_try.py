@@ -26,8 +26,16 @@ def LLM_chat(text):
     response = ollama.chat(model='llama3:instruct', messages=messages)
     messages.append(response['message'])
     
+######################### future funcs to interact w DB
 def add_to_db(message):
     pass
+
+def remove_from_db(message_id):
+    pass
+
+def edit_db(message_id, new_content):
+    pass
+############################################
 
 @app.route('/delete/<int:n>')
 def delete(n):
@@ -35,14 +43,29 @@ def delete(n):
     global messages
     try:
         #### borrar a BD
-        if n == 0:
-            messages = []
-        else:
-            messages = messages[:n]
+        messages = messages[:n]
         return redirect('/')
     except:
         return "There was an error while erasing your messages"
-    
+
+@app.route('/update/<int:n>', methods=['POST', 'GET'])
+def update(n):
+    global messages
+    n -= 1
+    print(n)
+    if request.method == 'POST':
+        new_content = request.form['text']
+        try:
+            role = messages[n]['role']
+            messages[n] = {'role': role, 'content': new_content}
+            return redirect('/')
+        except:
+            return "There was an error while erasing your messages"
+    else:
+        old_content = messages[n]['content']
+        return render_template('update.html', n=n, old_content=old_content)
+        
+
 
 
 
