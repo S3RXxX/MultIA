@@ -19,10 +19,10 @@
         {% for message in messages %}
             {% if message['role']=='user' %}
                 <tr>
-                    <td> </td>
+                    <td>  </td>
                     <td>{{ message['content'] }}</td>
                     <td>
-                        <a href="">Delete</a>
+                        <a href="/delete/{{loop.index}}">Delete</a>
                         <a href="">Edit</a>
                     </td>
                 </tr>
@@ -32,7 +32,7 @@
                     <td>{{ message['content'] }}</td>
                     <td>  </td>
                     <td>
-                        <a href="">Delete</a>
+                        <a href="/delete/{{loop.index}}">Delete</a>
                         <a href="">Edit</a>
                     </td>
                 </tr>
