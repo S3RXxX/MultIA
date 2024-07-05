@@ -7,8 +7,7 @@ def index():
     if request.method=='POST':
         try:
             text_content = request.form["text"]
-            # LLM_chat(text=text_content)
-            messages.append({"role":"debugging", "content": text_content})
+            LLM_chat(text=text_content)
         except:
             return "There was an issue while thinking for a response"
         return redirect('/')
@@ -26,16 +25,6 @@ def LLM_chat(text):
     response = ollama.chat(model='llama3:instruct', messages=messages)
     messages.append(response['message'])
 
-    return f" \n {response['message']['content']} \n"
-    # print()
-    # print(response['message']['content'])
-    # print()
-
-# @app.route('/get')
-# def get_bot_response():    
-#     userText = request.args.get('msg')  
-#     response = LLM_chat(userText)  
-#     return response
 
 if __name__=="__main__":
     messages = []

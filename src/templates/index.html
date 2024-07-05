@@ -17,7 +17,7 @@
         </tr>
         
         {% for message in messages %}
-            {% if messages['role']=='user' %}
+            {% if message['role']=='user' %}
                 <tr>
                     <td> </td>
                     <td>{{ message['content'] }}</td>
@@ -30,7 +30,7 @@
             {% else %}
                 <tr>
                     <td>{{ message['content'] }}</td>
-                    <td> </td>
+                    <td>  </td>
                     <td>
                         <a href="">Delete</a>
                         <a href="">Edit</a>
